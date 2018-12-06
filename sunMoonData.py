@@ -7,11 +7,9 @@ import pandas as pd
 from os import system as sys
 
 def getDateRange():
-    print('')
-    print('')
+    print("\n\n", end="")
     startDate = input("What is the start date? Ex. 2018-12-25      ").replace("-",",")
-    print('')
-    print('')
+    print("\n\n", end="")
     endDate   = input("What is the end date? Ex. 2018-12-25        ").replace("-",",")
 
 ##    startDate = '2019-01-01'
@@ -85,8 +83,7 @@ def scrapeDay(date, city, state):
     return df2
 
 def cleanMoon(df):
-    print('')
-    print('')
+    print("\n\n", end="")
     print('Cleaning up some funny business...')
     
     for i in range(len(df.index)):
@@ -107,30 +104,23 @@ def sunMoonDate():
     sys('clear')
 
     df = pd.DataFrame()
-    print('')
-    print('')
-    print('')
+    print("\n\n\n", end="")
     fN = input('Desired filename of .csv?     ')
-    print('')
-    print('')
-    print('')
+    print("\n\n\n", end="")
     if fN[-4:] in ['.csv','.CSV','.Csv','.CSv']:
         fN = fN[:-4]
 
     city = input('What City?                    ')
     city = city.lower()
     city = city.replace(' ','+')
-    print('')
-    print('')
-    print('')
+    print("\n\n\n", end="")
     
     state = input('What State? (ex. NY)          ')
     state = state.upper()
         
     dateRange, s, e = getDateRange()
 
-    print('')
-    print('')
+    print("\n\n", end="")
     print('Collecting Sun/Moon Data for ' + city.title() + ', ' + state + ' from ' + str(s.ctime())[4:].replace('00:00:00 ', '') + ' to ' + str(e.ctime())[4:].replace('00:00:00 ', ''))
     for i in dateRange:
         dfi = scrapeDay(i, city, state)
@@ -141,9 +131,7 @@ def sunMoonDate():
     print('Saving file as ' + fN + '.csv')
     df.to_csv(fN + '.csv')
 
-    print('')
-    print('')
-    print('')
+    print("\n\n\n", end="")
     openfile = input('Open .csv in LibreOffice? (y/n)     ')
     if openfile == 'y' or openfile == 'Y':
         sys('localc --view ' +  fN + '.csv')
